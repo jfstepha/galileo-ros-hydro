@@ -1,0 +1,30 @@
+--- a/src/rospkg/rospack.py	2014-01-18 22:20:52.919323867 -0500
++++ b/src/rospkg/rospack.py	2014-01-16 07:39:57.263662898 -0500
+@@ -55,6 +55,19 @@
+     path = os.path.abspath(path)
+     basename = os.path.basename
+     for d, dirs, files in os.walk(path, topdown=True, followlinks=True):
++	print "ROSPACK Checking directory %s                                                            \r" % d, 
++        [dirs.remove(di) for di in dirs if di[0] == '.']
++        [dirs.remove(di) for di in dirs if di == 'src' and d=="/usr"]
++        [dirs.remove(di) for di in dirs if di == 'etc' and d=="/usr"]
++        [dirs.remove(di) for di in dirs if di == 'include' and d=="/usr"]
++        [dirs.remove(di) for di in dirs if di == 'locale' and d=="/usr/lib"]
++        [dirs.remove(di) for di in dirs if di == 'perl' and d=="/usr/lib"]
++        [dirs.remove(di) for di in dirs if di == 'perl5' and d=="/usr/lib"]
++        [dirs.remove(di) for di in dirs if di == 'terminfo' and d=="/usr/share"]
++        [dirs.remove(di) for di in dirs if di == 'man' and d=="/usr/share"]
++        [dirs.remove(di) for di in dirs if di == 'oprofile' and d=="/usr/share"]
++
++
+         if PACKAGE_FILE in files:
+             # parse package.xml and decide if it matches the search criteria
+             root = ElementTree(None, os.path.join(d, PACKAGE_FILE))
+@@ -87,6 +100,7 @@
+             continue  #leaf
+         # remove hidden dirs (esp. .svn/.git)
+         [dirs.remove(di) for di in dirs if di[0] == '.']
++    print("ROSPACK returning %s" % resources)
+     return resources
+ 
+ class ManifestManager(object):

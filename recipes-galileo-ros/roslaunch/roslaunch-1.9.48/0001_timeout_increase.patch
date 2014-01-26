@@ -1,0 +1,13 @@
+--- roslaunch/src/roslaunch/launch.py       2014-01-25 17:30:09.292732055 -0500
++++ /home/jfstepha/Documents/clanton_files/launch.py    2014-01-24 19:37:15.919206161 -0500
+@@ -55,8 +55,8 @@ from roslaunch.pmon import start_process
+ 
+ from roslaunch.rlutil import update_terminal_name
+ 
+-_TIMEOUT_MASTER_START = 10.0 #seconds
+-_TIMEOUT_MASTER_STOP  = 10.0 #seconds
++_TIMEOUT_MASTER_START = 20.0 #seconds
++_TIMEOUT_MASTER_STOP  = 20.0 #seconds
+ 
+ _ID = '/roslaunch'
+ 
