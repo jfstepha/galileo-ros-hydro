@@ -1,0 +1,1 @@
+Openembedded yocto recipes to get ROS working on Intel Galileo
